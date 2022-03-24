@@ -1,0 +1,151 @@
+﻿@model CyS___DeportesConcepcioin_v2.Models.TablesViewModels.Kinesiologo.FutbolistaViewModelKine
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Carpeta css-->
+        <link rel="stylesheet" type="text/css" href="~/Styles/css/kinesiologo/antecePersonales.css">
+
+        <!--ICONOS SOLID-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!--FRAMEWORK BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        <title>Inicio</title>
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background-color: #761AAD; position: relative;">
+            <div class="container">
+                <a href="#" class="navbar-brand mb-0 h1">
+                    <img class="d-inline-block align-top" src="~/Styles/img/logodc2.png" width="40" height="40">
+                </a>
+                <button type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav, #sesionNav"
+                        class="navbar-toggler"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("IndexKine" , "Kine")" class="nav-link">
+                                <i class="fas fa-user"></i>  Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("ListadoJugadores" , "Kine")" class="nav-link">
+                                <i class="far fa-futbol"></i>  Futbolistas
+                            </a>
+                        </li>
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("VerEstadisticas" , "Kine")" class="nav-link">
+                                <i class="fas fa-chart-area"></i>  Estadisticas
+                            </a>
+                        </li>
+                        <li class="nav-item text-center disabled">
+                            @*<a href="../kinesiologo/listadoEncuestas.html" class="nav-link">
+                <i class="far fa-clipboard"></i>  Encuestas
+            </a>*@
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-center active sesion">
+                            <a href="@Url.Action("CerrarSession" , "Login")"><i class="fas fa-sign-out-alt"></i>  Cerrar Sesi&oacute;n</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" style="width: 80%; margin-top: 30px; border-color: black;" id="formAntece">
+            <div class="header" style="margin-top: 100px;">
+                <br />
+                <h2 style="color: blueviolet;">Antecedentes Personales</h2>
+            </div>
+            @using (Html.BeginForm("AntecedentesPersonalesFutbolista", "Kine", FormMethod.Post, new { role = "form", @class = "" }))
+            {
+                @Html.HiddenFor(f => f.RutFutbolista)
+                <div class="row g-3">
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Enfermedades Infancia:</h5>
+                        @Html.TextBoxFor(f => f.EnferInfancia, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Alergias:</h5>
+                        @Html.TextBoxFor(f => f.Alergias, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Operaciones:</h5>
+                        @Html.TextBoxFor(f => f.Operaciones, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Traumatismos:</h5>
+                        @Html.TextBoxFor(f => f.Traumatismos, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Alteraciones Visuales:</h5>
+                        @Html.TextBoxFor(f => f.AlterVisual, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h4 class="mb-3 mt-4">Examen Fisico</h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="mb-3">Talla(cm):</h5>
+                        @Html.TextBoxFor(f => f.Talla, new { @class = "form-control", type = "number", min = "0", step = "0.1", @required = "required" })
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="mb-3">Peso:</h5>
+                        @Html.TextBoxFor(f => f.Peso, new { @class = "form-control", type = "number", min = "0", step = "0.1", @required = "required" })
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="mb-3">FC:</h5>
+                        @Html.TextBoxFor(f => f.FC, new { @class = "form-control", type = "number", min = "0", step = "0.1", @required = "required" })
+                    </div>
+                    <div class="col-sm-3">
+                        <h5 class="mb-3">PA:</h5>
+                        @Html.TextBoxFor(f => f.PA, new { @class = "form-control", type = "number", min = "0", step = "0.1", @required = "required" })
+                    </div>
+                    <div class="col-sm-12">
+                        <h4 class="mb-3 mt-4">Aparato Locomotor</h4>
+                    </div>
+                    <div class="col-sm-12">
+                        <h5 class="mb-3">Alteraciones Posturales:</h5>
+                        @Html.TextBoxFor(f => f.AlterracionPost, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="mb-3">Genu Valgo/Genu varu:</h5>
+                        @Html.TextBoxFor(f => f.GenuValgo, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="mb-3">Pie Plano/Pie Valgo:</h5>
+                        @Html.TextBoxFor(f => f.PiePlano, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <div class="row g-3" style="margin-top: 3px;">
+                        <div class="col-sm-12">
+                            <h4 class="mb-3">Otros:</h4>
+                            @Html.TextAreaFor(f => f.Otro, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg btn-block" style="margin-top: 25px; width: 180px; background-color: blueviolet;">
+                        Guardar
+                    </button>
+                </div>
+            }
+            <br>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

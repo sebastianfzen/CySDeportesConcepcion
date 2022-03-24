@@ -1,0 +1,72 @@
+body{
+    background: url(../img/fondo-login.jpg)no-repeat center center fixed;
+    background-size: cover;
+}
+
+.bg{
+    background-image: url(../img/lododc.jpg);
+    background-position: center center;
+    opacity: .90;
+}
+
+.row{
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 0;
+}
+
+.bg2{
+    background-color: #761AAD;
+    opacity: .95;
+    padding: 0 20px;
+    box-shadow: 0px 0px 3px #848484;
+}
+
+.user-image{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.user-image img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #848484;
+}
+
+.mb-4 input{
+    height: 42px;
+    font-size: 18px;
+    border: 0;
+    padding-left: 54px;
+    border-radius: 5px;
+}
+
+.mb-4::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top:4px;
+}
+
+.mb-4#user-group::before{
+    content: "\f007";
+}
+
+.mb-4#contrasenia-group::before{
+    content: "\f023";
+}
+
+button{
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+.forgot{
+    padding: 5px 0;
+}
+
+.forgot a{
+    color: white;
+}

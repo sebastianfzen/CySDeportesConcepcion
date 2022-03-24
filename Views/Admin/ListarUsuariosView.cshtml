@@ -1,0 +1,282 @@
+﻿@model dynamic
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Carpeta css-->
+        <link rel="stylesheet" type="text/css" href="../Styles/css/administrador/listUsuarios.css">
+
+        <!--JQUERY-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <!--ICONOS SOLID-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!--FRAMEWORK BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <!--SCRIPT DATATABLES-->
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        <title>Listado de Usuarios - Administrador</title>
+    </head>
+    <body>
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background-color: #761AAD; position: relative;">
+            <div class="container">
+                <a href="#" class="navbar-brand mb-0 h1">
+                    <img class="d-inline-block align-top" src="../styles/img/logodc2.png" width="40" height="40">
+                </a>
+                <button type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav, #sesionNav"
+                        class="navbar-toggler"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("IndexAdmin", "Admin")" class="nav-link">
+                                <i class="fas fa-user"></i>  Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item text-center active">
+                            <a href="@Url.Action("ListarUsuariosView", "Admin")" class="nav-link">
+                                <i class="fas fa-users"></i>  Listado de Usuarios
+                            </a>
+                        </li>
+                        <li class="nav-item text-center">
+                            <a href="@Url.Action("ListarItems", "Admin")" class="nav-link">
+                                <i class="fas fa-table"></i>  Listado de Datos
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-center active sesion">
+                            <a href="@Url.Action("CerrarSession" , "Login")" id="CerrarSession"><i class="fas fa-sign-out-alt"></i>  Cerrar Sesi&oacute;n</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="ListFutb" class="container" style="margin-top: 100px;">
+
+            <h3 style="color: blueviolet;">Listado de Jugadores</h3>
+
+            <br>
+
+            <a href="@Url.Action("AgregarFutbolistaView" , "Admin")">
+                <button class="btn btn-primary btn-lg btn-block" style="width: 55px; background-color: blueviolet;">
+                    <i class="fas fa-user-plus"></i>
+                </button>
+            </a>
+            <input style="height: 50px; width: 200px; float: right;" class="form-control" id="buscarJugadores" type="text" placeholder="Buscar...">
+            <br><br>
+            <div class="table-responsive">
+                <table id="listadodeJugadores" class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jugadoresUsers">
+                        @foreach (var futbolista in Model.Futbolista)
+                        {
+                            <tr>
+                                <td>@futbolista.RutFutbolista</td>
+                                <td>@futbolista.NomFutbolista</td>
+                                <td>@futbolista.ApPaternoFutbolista</td>
+                                <td>@futbolista.EmailFutbolista</td>
+                                <td><a href="@Url.Content("~/Admin/DatosFutbolistaSeleccionadoView/?RutFutbolista="+@futbolista.RutFutbolista)">Ver Detalles</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+        </div>
+
+        <div id="ListProf" class="container" style="margin-top: 20px; overflow-x: auto">
+
+            <h3 style="color: blueviolet;">Listado de Profesionales</h3>
+
+            <br>
+
+            <a href="@Url.Action("AgregarProfesionalView" , "Admin")">
+                <button class="btn btn-primary btn-lg btn-block" style="width: 55px; background-color: blueviolet;">
+                    <i class="fas fa-user-plus"></i>
+                </button>
+            </a>
+
+            <input style="height: 50px; width: 200px; float: right;" class="form-control" id="buscarUsuarios" type="text" placeholder="Buscar...">
+
+            <br><br>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped" id="listadodeUsuarios">
+                    <thead>
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Profesión</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="profesionalesUsers">
+                        @foreach (var kinesiologo in Model.Kinesiologos)
+                        {
+                            <tr>
+                                <td>@kinesiologo.RutKinesiologo</td>
+                                <td>@kinesiologo.NomKinesiologo</td>
+                                <td>@kinesiologo.ApPaternoKinesiologo</td>
+                                <td>@kinesiologo.EmailKinesiologo</td>
+                                <td>Kinesiologo</td>
+                                <td><a href="@Url.Content("~/Admin/DatosProfesionalSeleccionadoView/?RutProfesional="+@kinesiologo.RutKinesiologo)">Ver Detalles</a></td>
+                            </tr>
+                        }
+                        @foreach (var nutricionista in Model.Nutricionistas)
+                        {
+                            <tr>
+                                <td>@nutricionista.RutNutricionista</td>
+                                <td>@nutricionista.NomNutricionista</td>
+                                <td>@nutricionista.ApPaternoNutricionista</td>
+                                <td>@nutricionista.EmailNutricionista</td>
+                                <td>Nutricionista</td>
+                                <td><a href="@Url.Content("~/Admin/DatosProfesionalSeleccionadoView/?RutProfesional="+nutricionista.RutNutricionista)">Ver Detalles</a></td>
+                            </tr>
+                        }
+                        @foreach (var ctecnico in Model.CTecnicos)
+                        {
+                            <tr>
+                                <td>@ctecnico.RutCTecnico</td>
+                                <td>@ctecnico.NomCTecnico</td>
+                                <td>@ctecnico.ApPaternoCTecnico</td>
+                                <td>@ctecnico.EmailCTecnico</td>
+                                <td>Cuerpo Tecnico</td>
+                                <td><a href="@Url.Content("~/Admin/DatosProfesionalSeleccionadoView/?RutProfesional="+ctecnico.RutCTecnico)">Ver Detalles</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br><br>
+
+        <div id="ListProf" class="container" style="margin-top: 20px; overflow-x: auto">
+
+            <h3 style="color: blueviolet;">Listado de Inhabilitados</h3>
+
+            <br>
+
+            <input style="height: 50px; width: 200px; float: right;" class="form-control" id="buscarUsuariosInhabilitados" type="text" placeholder="Buscar...">
+
+            <br><br>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped" id="listadodeUsuariosInhabilitados">
+                    <thead>
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Profesión</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="UsersInhabilitados">
+                        @foreach (var futbolista in Model.FutbolistaEliminados)
+                        {
+                            <tr>
+                                <td>@futbolista.RutFutbolista</td>
+                                <td>@futbolista.NomFutbolista</td>
+                                <td>@futbolista.ApPaternoFutbolista</td>
+                                <td>Futbolista</td>
+                                <td><a href="@Url.Content("~/Admin/HabilitarUsuarioSeleccionadoView/?RutUsuario="+@futbolista.RutFutbolista)">Habilitar</a></td>
+                            </tr>
+                        }
+                        @foreach (var kinesiologo in Model.KinesiologosEliminados)
+                        {
+                            <tr>
+                                <td>@kinesiologo.RutKinesiologo</td>
+                                <td>@kinesiologo.NomKinesiologo</td>
+                                <td>@kinesiologo.ApPaternoKinesiologo</td>
+                                <td>Kinesiologo</td>
+                                <td><a href="@Url.Content("~/Admin/HabilitarUsuarioSeleccionadoView/?RutUsuario="+@kinesiologo.RutKinesiologo)">Habilitar</a></td>
+                            </tr>
+                        }
+                        @foreach (var nutricionista in Model.NutricionistasEliminados)
+                        {
+                            <tr>
+                                <td>@nutricionista.RutNutricionista</td>
+                                <td>@nutricionista.NomNutricionista</td>
+                                <td>@nutricionista.ApPaternoNutricionista</td>
+                                <td>Nutricionista</td>
+                                <td><a href="@Url.Content("~/Admin/HabilitarUsuarioSeleccionadoView/?RutUsuario="+nutricionista.RutNutricionista)">Habilitar</a></td>
+                            </tr>
+                        }
+                        @foreach (var ctecnico in Model.CTecnicosEliminados)
+                        {
+                            <tr>
+                                <td>@ctecnico.RutCTecnico</td>
+                                <td>@ctecnico.NomCTecnico</td>
+                                <td>@ctecnico.ApPaternoCTecnico</td>
+                                <td>Cuerpo Tecnico</td>
+                                <td><a href="@Url.Content("~/Admin/HabilitarUsuarioSeleccionadoView/?RutUsuario="+ctecnico.RutCTecnico)">Habilitar</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br><br>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+        <!--Funcion filtrar datos a las tablas-->
+        <script>
+            $(document).ready(function () {
+                $("#buscarJugadores").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#jugadoresUsers tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+            $(document).ready(function () {
+                $("#buscarUsuarios").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#profesionalesUsers tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+
+            $(document).ready(function () {
+                $("#buscarUsuariosInhabilitados").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#UsersInhabilitados tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+        <!--Carpeta css-->
+        <link rel="stylesheet" type="text/css" href="~/Styles/css/login.css">
+
+        <!--ICONOS SOLID-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!--FRAMEWORK BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container w-75 mt-5 rounded shadow">
+            <div class="row align-items-stretch">
+                <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded-left" id="image-logo">
+
+                </div>
+                <div class="col text-center bg2 rounded-right">
+                    <div class="col-12 user-image">
+                        <img src="~/Styles/img/avatar-login.png">
+                    </div>
+
+                    <!--LOGIN-->
+                    <form id="formLogin">
+                        <div class="mb-4" id="user-group">
+                            <input type="text" name="rut_usuario" class="form-control" placeholder="Usuario">
+                        </div>
+                        <div class="mb-4" id="contrasenia-group">
+                            <input type="password" name="contrasenia" class="form-control" placeholder="Contrase&ntilde;a">
+                        </div>
+                        <div class="d-grid text-center">
+                            <input type="submit" value="Ingresar" class="btn btn-primary" style="width: 60%; margin: 5px 0 25px;" />
+                        </div>
+                    </form>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <script src="bootstrap.bundle.min.js"></script>
+        <script src='jquery-3.2.1.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+
+        <script>
+                $(document).ready(function () {
+                    $("#formLogin").submit(function (e) {
+                        e.preventDefault();
+                        url = "@Url.Content("~/Login/Acceso")"
+                        parametros = $(this).serialize();
+                        $.post(url, parametros, function (data) {
+                            if (data == "Administrador") {
+                                document.location.href = "@Url.Content("~/Admin/IndexAdmin")";
+                            } else if (data == "Kinesiologo") {
+                                document.location.href = "@Url.Content("~/Kine/IndexKine")";
+                            } else if (data == "Nutricionista") {
+                                document.location.href = "@Url.Content("~/Nutri/IndexNutri")";
+                            } else if (data == "CTecnico") {
+                                document.location.href = "@Url.Content("~/CTecnico/IndexCTecnico")";
+                            }
+                            else
+                            {
+                                alert(data);
+                            }
+                        })
+                    })
+                })
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,229 @@
+﻿@model CyS___DeportesConcepcioin_v2.Models.TablesViewModels.FutbolistaViewModel
+@{
+    List<SelectListItem> categorias = (List<SelectListItem>)ViewBag.Categorias;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Carpeta css-->
+    <link rel="stylesheet" type="text/css" href="~/Styles/css/nutricionista/datosFutbolista.css">
+
+    <!--ICONOS SOLID-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!--FRAMEWORK BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>Datos de Futbolistas</title>
+</head>
+<body style="height: 900px;">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background-color: #761AAD; position: relative;">
+        <div class="container">
+            <a href="#" class="navbar-brand mb-0 h1">
+                <img class="d-inline-block align-top" src="~/Styles/img/logodc2.png" width="40" height="40">
+            </a>
+            <button type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav, #sesionNav"
+                    class="navbar-toggler"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item text-center">
+                        <a href="@Url.Action("IndexAdmin", "Admin")" class="nav-link">
+                            <i class="fas fa-user"></i>  Mi Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item text-center active">
+                        <a href="@Url.Action("ListarUsuariosView", "Admin")" class="nav-link">
+                            <i class="fas fa-users"></i>  Listado de Usuarios
+                        </a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a href="@Url.Action("ListarItems", "Admin")" class="nav-link">
+                            <i class="fas fa-table"></i>  Listado de Datos
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item text-center active sesion">
+                        <a href="@Url.Action("CerrarSession" , "Login")" id="CerrarSession"><i class="fas fa-sign-out-alt"></i>  Cerrar Sesi&oacute;n</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header">
+        <img class="foto_perfil" src="~/Styles/img/avatar-login.png">
+    </div>
+
+    <div class="container" style="width: 90%; margin-top: 30px;" id="datosJugador">
+        <br />
+        <div class="input-group">
+            <h3 style="color: blueviolet;">Datos del Jugador&nbsp;</h3>
+            <span class="input-group-btn">
+                <button style="background-color: blueviolet;" id="editData" class="btn btn-primary" type="button">
+                    <i class="fas fa-edit"></i> Presiones Para Editar
+                </button>
+            </span>
+        </div>
+
+        <div class="row g-1 mt-4">
+            @using (Html.BeginForm("DatosFutbolistaSeleccionadoView", "Admin", FormMethod.Post, new { role = "form", @class = "" }))
+            {
+                <div class="row g-3">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Nombre:</h5>
+                        @Html.TextBoxFor(f => f.NomFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "NomFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Apellido Paterno:</h5>
+                        @Html.TextBoxFor(f => f.ApPaternoFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "ApPaternoFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Apellido Materno:</h5>
+                        @Html.TextBoxFor(f => f.ApMaternoFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "ApMaternoFutbolista", @required = "required" })
+                    </div>
+                </div>
+                <div class="row g-3" style="margin-top: 3px;">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Rut:</h5>
+                        @Html.TextBoxFor(f => f.RutFutbolista, new { @class = "form-control", @readonly = "readonly", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Edad:</h5>
+                        @Html.TextBoxFor(f => f.EdadFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "EdadFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Fecha de Nacimiento:</h5>
+                        @Html.TextBoxFor(f => f.FechaNacimientoFutbolista, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly", @id = "FechaNacimientoFutbolista", @required = "required" })
+                    </div>
+                </div>
+                <div class="row g-3" style="margin-top: 3px;">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Nacionalidad:</h5>
+                        @Html.TextBoxFor(f => f.NacionalidadFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "NacionalidadFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Posición:</h5>
+                        @Html.DropDownListFor(f => f.PosicionFutbolista, new List<SelectListItem>
+                        {
+                            new SelectListItem{ Text = "Delantero", Value = "Delantero"},
+                            new SelectListItem{ Text = "Defensa", Value = "Defensa"},
+                            new SelectListItem{ Text = "Centro Campista", Value = "Centro Campista"},
+                            new SelectListItem{ Text = "Portero", Value = "Portero"}
+                        }, new { @class = "form-control", @readonly = "readonly", @id = "PosicionFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Correo Electronico:</h5>
+                        @Html.TextBoxFor(f => f.EmailFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "EmailFutbolista", @required = "required" })
+                    </div>
+                </div>
+                <div class="row g-3 mt-1">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Calzado:</h5>
+                        @Html.TextBoxFor(f => f.CalzadoFutbolista, new { @class = "form-control", type = "number", min = "0", step = "0.1", @readonly = "readonly", @id = "CalzadoFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Telefono:</h5>
+                        @Html.TextBoxFor(f => f.TelefonoFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "TelefonoFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Club:</h5>
+                        @Html.TextBoxFor(f => f.ClubFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "ClubFutbolista", @required = "required" })
+                    </div>
+                </div>
+                <div class="row g-3" style="margin-top: 3px;">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Temporada:</h5>
+                        @Html.TextBoxFor(f => f.TemporadaFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "TemporadaFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Año:</h5>
+                        @Html.TextBoxFor(f => f.AnioFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "AnioFutbolista", @required = "required" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Año:</h5>
+                        @Html.DropDownListFor(f => f.CategoriaFutbolista, categorias, new { @class = "form-control", @readonly = "readonly", @id = "CategFutbolista" })
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button id="ActualizarFutbolista" class="btn btn-primary btn-lg btn-block" style="margin-top: 25px; width: 180px; background-color: blueviolet;" disabled>
+                        Actualizar
+                    </button>
+                    <br />
+                </div>
+            }
+            <div class="text-center">
+                <button onclick="jsEliminarUsuario();" class="btn btn-danger btn-lg btn-block" style="margin-top: 25px; width: 180px;">
+                    Dar de Baja
+                </button>
+                <br /><br /><br />
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#editData").click(function () {
+                $('#NomFutbolista').removeAttr("readonly"),
+                    $('#ApPaternoFutbolista').removeAttr("readonly"),
+                    $('#ApMaternoFutbolista').removeAttr("readonly"),
+                    $('#EdadFutbolista').removeAttr("readonly"),
+                    $('#FechaNacimientoFutbolista').removeAttr("readonly"),
+                    $('#NacionalidadFutbolista').removeAttr("readonly"),
+                    $('#PosicionFutbolista').removeAttr("readonly"),
+                    $('#EmailFutbolista').removeAttr("readonly"),
+                    $('#CalzadoFutbolista').removeAttr("readonly"),
+                    $('#TelefonoFutbolista').removeAttr("readonly"),
+                    $('#ClubFutbolista').removeAttr("readonly"),
+                    $('#TemporadaFutbolista').removeAttr("readonly"),
+                    $('#AnioFutbolista').removeAttr("readonly"),
+                    $('#CategFutbolista').removeAttr("readonly"),
+                    $('#FechaNacimientoFutbolista').prop('type', 'date'),
+                    $('#ActualizarFutbolista').removeAttr("disabled")
+            });
+        });
+    </script>
+
+    <script>
+        function jsEliminarUsuario() {
+            if (confirm("¿Estas Seguro de Eliminar a Este Usuario?")) {
+                var RutUser = document.getElementById("RutFutbolista").value;
+                url = "@Url.Content("~/Admin/EliminarFutbolistaSeleccionadoView")"+"/?RutFutbolista="+RutUser;
+                $.post(url, function (data) {
+                    if (data == "1") {
+                        alert("Usuario Eliminado con Exito");
+                        document.location.href = "@Url.Content("~/Admin/ListarUsuariosView")";
+                    }
+                    else
+                    {
+                        alert("Ocurrio un Error");
+                    }
+                })
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

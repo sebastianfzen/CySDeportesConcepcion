@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3982a8710fb41c0bae0e9cf9913b77f" Name="Diagram1">
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.ant_familiar" Width="1.5" PointX="5.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.ant_personales" Width="1.5" PointX="5.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.categoria" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.comentario_nutri" Width="1.5" PointX="5.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.cuerpo_tec" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.encuesta" Width="1.5" PointX="5.25" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.entrenamiento" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.ev_nutri" Width="1.5" PointX="8.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.futbolista" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.hist_clinico" Width="1.5" PointX="8.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.insumo" Width="1.5" PointX="11.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.kinesiologo" Width="1.5" PointX="3" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.lesion" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.nutricionista" Width="1.5" PointX="3" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.pregunta" Width="1.5" PointX="7.5" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.respuesta" Width="1.5" PointX="10.5" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.suplemento" Width="1.5" PointX="10.25" PointY="36.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.tipo_entrenam" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeportesConcepcionModel.usuario" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.ant_familiar_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.ant_personales_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.entrenamiento_categoria_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.futbolista_categoria_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.comentario_nutri_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.cuerpo_tec_usuario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.entrenamiento_cuerpo_tec_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.encuesta_kinesiologo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.encuesta_nutricionista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.pregunta_encuesta_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.respuesta_encuesta_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.entrenamiento_tipo_entrenam_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.ev_nutri_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.ev_nutri_nutricionista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.futbolista_usuario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.hist_clinico_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.insumo_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.respuesta_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.suplemento_futbolista_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.hist_clinico_lesion_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.insumo_kinesiologo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.kinesiologo_usuario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.nutricionista_usuario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeportesConcepcionModel.suplemento_nutricionista_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,383 @@
+﻿@model CyS___DeportesConcepcioin_v2.Models.TablesViewModels.Nutricionista.DetallesFutbolistaViewModel
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Carpeta css-->
+        <link rel="stylesheet" type="text/css" href="~/Styles/css/nutricionista/datosFutbolista.css">
+
+        <!--ICONOS SOLID-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+        <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!--FRAMEWORK BOOTSTRAP-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        <title>Datos de Futbolista</title>
+    </head>
+    <body style="height: 900px;">
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background-color: #761AAD; position: relative;">
+            <div class="container">
+                <a href="#" class="navbar-brand mb-0 h1">
+                    <img class="d-inline-block align-top" src="~/Styles/img/logodc2.png" width="40" height="40">
+                </a>
+                <button type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav, #sesionNav"
+                        class="navbar-toggler"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("IndexNutri" , "Nutri")" class="nav-link">
+                                <i class="fas fa-user"></i>  Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item text-center disabled">
+                            <a href="@Url.Action("ListadoJugadores" , "Nutri")" class="nav-link">
+                                <i class="far fa-futbol"></i>  Futbolistas
+                            </a>
+                        </li>
+                        <li class="nav-item text-center active">
+                            @*<a href="../nutricionista/listadoEncuestas.html" class="nav-link">
+                                <i class="far fa-clipboard"></i>  Encuestas
+                            </a>*@
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-center active sesion">
+                            <a href="@Url.Action("CerrarSession" , "Login")"><i class="fas fa-sign-out-alt"></i>  Cerrar Sesi&oacute;n</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="header">
+            <img class="foto_perfil" src="~/Styles/img/avatar-login.png">
+        </div>
+
+        <div class="container" style="width: 90%; margin-top: 30px;" id="datosJugador">
+            <h3 style="color: blueviolet;">Datos del Jugador</h3>
+            @using (Html.BeginForm("DatosJugador", "Nutri", FormMethod.Post, new { role = "form", @class = "" }))
+            {
+                <div class="row g-1 mt-4">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Nombre</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.NomFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Rut</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.RutFutbolista, new { @class = "form-control", @readonly = "readonly", @id = "RutFutbolista" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Edad</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.EdadFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row g-1 mt-2" style="margin-top: 3px;">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Fecha de Nacimiento</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.FechaNacimientoFutbolista, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Nacionalidad</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.NacionalidadFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Telefóno</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.TelefonoFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="row g-1" style="margin-top: 3px;">
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Correo</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.EmailFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 class="mb-3">Posición</h5>
+                        @Html.TextBoxFor(f => f.FutbolistaViewModelNutri.PosicionFutbolista, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+            }
+            <br>
+        </div>
+        <br />
+
+        <div id="evNutriJugador" class="container g-1 mt-4" style="width: 90%; margin-top: 30px;">
+            <div class="input-group">
+                <h3 style="color: blueviolet; margin-top: 10px;">Ev. Nutricional</h3>
+            </div>
+            <div class="table-responsive" style="height: 115px; border: 4px solid black;">
+                <table class="table table-bordered" style="width: 100%;">
+                    <thead style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            <th rowspan="2" style="border: 2px solid black; background-color: blueviolet; color: white;">Peso</th>
+                            <th rowspan="2" style="border: 2px solid black; background-color: blueviolet; color: white;">Talla</th>
+                            <th colspan="2" style="border: 2px solid black; height: 2px; line-height: 2px; background-color: blueviolet; color: white;">M. Adiposa</th>
+                            <th colspan="2" style="border: 2px solid black; height: 2px; line-height: 2px; background-color: blueviolet; color: white;">M. Muscular</th>
+                            <th rowspan="2" style="border: 2px solid black; background-color: blueviolet; color: white;">6 Pliegues</th>
+                            <th rowspan="2" style="border: 2px solid black; background-color: blueviolet; color: white;">I.M.O.</th>
+                        </tr>
+                        <tr style="text-align: center">
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">%</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Kg.</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">%</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Kg.</th>
+                        </tr>
+                    </thead>
+                    <tbody style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            @if (Model.evaluacionNutricionalViewModels != null)
+                            {
+                                foreach (var EvNutri in Model.evaluacionNutricionalViewModels)
+                                {
+                                    <td id="Peso" style="border: 2px solid black">@EvNutri.peso</td>
+                                    <td style="border: 2px solid black">@EvNutri.talla_estatura</td>
+                                    if (EvNutri.estado_uno == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white;">@EvNutri.porcent_masa_adiposa %</td>
+                                    }
+                                    else if (EvNutri.estado_uno == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.porcent_masa_adiposa %</td>
+                                    }
+                                    else if (EvNutri.estado_uno == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.porcent_masa_adiposa %</td>
+                                    }
+
+                                    if (EvNutri.estado_uno_dos == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white; ">@EvNutri.kilo_masa_adiposa Kg</td>
+                                    }
+                                    else if (EvNutri.estado_uno_dos == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.kilo_masa_adiposa Kg</td>
+                                    }
+                                    else if (EvNutri.estado_uno_dos == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.kilo_masa_adiposa Kg</td>
+                                    }
+
+                                    if (EvNutri.estado_dos == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white; ">@EvNutri.porcent_musculo %</td>
+                                    }
+                                    else if (EvNutri.estado_dos == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.porcent_musculo %</td>
+                                    }
+                                    else if (EvNutri.estado_dos == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.porcent_musculo %</td>
+                                    }
+
+                                    if (EvNutri.estado_dos_dos == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white; ">@EvNutri.kilo_musculo Kg</td>
+                                    }
+                                    else if (EvNutri.estado_dos_dos == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.kilo_musculo Kg</td>
+                                    }
+                                    else if (EvNutri.estado_dos_dos == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.kilo_musculo Kg </td>
+                                    }
+
+                                    if (EvNutri.estado_tres == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white; ">@EvNutri.sumatoria_pliegue mm</td>
+                                    }
+                                    else if (EvNutri.estado_tres == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.sumatoria_pliegue mm</td>
+                                    }
+                                    else if (EvNutri.estado_tres == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.sumatoria_pliegue mm</td>
+                                    }
+
+                                    if (EvNutri.estado_cuatro == 1)
+                                    {
+                                        <td style="border: 2px solid black; background-color: limegreen; color: white; ">@EvNutri.imo</td>
+                                    }
+                                    else if (EvNutri.estado_cuatro == 2)
+                                    {
+                                        <td style="border: 2px solid black; background-color: yellow; color: black;">@EvNutri.imo</td>
+                                    }
+                                    else if (EvNutri.estado_cuatro == 3)
+                                    {
+                                        <td style="border: 2px solid black; background-color: red; color: white;">@EvNutri.imo</td>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <div class="text-center">
+                <button onclick="EvaluacionNutricional();" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px; width: 180px; background-color: blueviolet;">
+                    Actualizar
+                </button>
+            </div>
+            <br>
+        </div>
+        <br />
+
+        @*Obtiene el Rut del Futbolista Seleccionado y Dependiendo de las Condiciones
+        Redirije a la vista de agregar o modificar*@
+        @if (Model.evaluacionNutricionalViewModels == null)
+        {
+            <script type="text/javascript">
+                function EvaluacionNutricional() {
+                    var Rut = document.getElementById("RutFutbolista").value;
+                    location.href = "http://cysdeportesconcepcion.somee.com/Nutri/EvaluacionNutricional/?RutFutbolista=" + Rut;
+                }
+            </script>
+        }
+        else
+        {
+            <script type="text/javascript">
+                function EvaluacionNutricional() {
+                    var Rut = document.getElementById("RutFutbolista").value;
+                    location.href = "http://cysdeportesconcepcion.somee.com/Nutri/EditarEvaluacionNutricional/?RutFutbolista=" + Rut;
+                }
+            </script>
+        }
+
+        <div id="suplementoNutriJugador" class="container" style="width: 90%;">
+            <div class="input-group">
+                <h3 style="color: blueviolet; margin-top: 10px;">Suplementos</h3>
+            </div>
+            <div class="table-responsive" style="overflow: auto; height: 250px; border: 4px solid black;">
+                <table class="table table-bordered" style="width: 100%; overflow-x: auto;">
+                    <thead style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Nombre</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Tipo</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Cantidad</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Fecha</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Comentario</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            @if (Model.suplementoViewModels != null)
+                            {
+                                foreach (var Suplemento in Model.suplementoViewModels)
+                                {
+                                    <td style="border: 2px solid black">@Suplemento.desc_suplemento</td>
+                                    <td style="border: 2px solid black">@Suplemento.tipo_suplemento</td>
+                                    <td style="border: 2px solid black">@Suplemento.cant_suplemento</td>
+                                    <td style="border: 2px solid black">@Suplemento.fecha_suplem.ToString("dd/MM/yyyy")</td>
+                                    <td style="border: 2px solid black">@Suplemento.comentariosuplem</td>
+                                    <td style="border: 2px solid black"><a href="@Url.Content("~/Nutri/EditarSuplemento/?RutFutbolista="+Suplemento.RutFutbolista)">Modificar</a> | <a href="@Url.Content("~/Nutri/EliminarSuplemento/?RutFutbolista="+Suplemento.RutFutbolista)">Eliminar</a></td>
+                                }
+                            }
+                            else
+                            {
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <button onclick="Suplemento();" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px; width: 180px; background-color: blueviolet;">
+                    Actualizar
+                </button>
+            </div>
+            <br />
+        </div>
+        <br />
+
+        @*Obtiene el Rut del Futbolista Seleccionado y Dependiendo de las Condiciones
+        Redirije a la vista de agregar o modificar*@
+        <script type="text/javascript">
+            function Suplemento() {
+                var Rut = document.getElementById("RutFutbolista").value;
+                location.href = "http://cysdeportesconcepcion.somee.com/Nutri/AgregarSuplemento/?RutFutbolista=" + Rut;
+            }
+        </script>
+
+
+        <div id="insumoNutriJugador" class="container" style="width: 90%;">
+            <div class="input-group">
+                <h3 style="color: blueviolet; margin-top: 10px;">Insumos</h3>
+            </div>
+            <div class="table-responsive" style="overflow: auto; height: 250px; border: 4px solid black;">
+                <table class="table table-bordered" style="width: 100%; overflow-x: auto;">
+                    <thead style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Nombre</thstyle="border:>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Tipo</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Cantidad</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Fecha</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Comentario</th>
+                            <th style="border: 2px solid black; background-color: blueviolet; color: white;">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="border: 3px solid black">
+                        <tr style="text-align: center">
+                            @if (Model.insumoFutbolistas != null)
+                            {
+                                foreach (var Insumo in Model.insumoFutbolistas)
+                                {
+                                    <td style="border: 2px solid black">@Insumo.descripcion_insumo</td>
+                                    <td style="border: 2px solid black">@Insumo.tipo_insumo</td>
+                                    <td style="border: 2px solid black">@Insumo.cantidad_insumo</td>
+                                    <td style="border: 2px solid black">@Insumo.fecha_insumo.ToString("dd/MM/yyyy")</td>
+                                    <td style="border: 2px solid black">@Insumo.comentarioinsumo</td>
+                                    <td style="border: 2px solid black"><a href="@Url.Content("~/Kine/EditarInsumo/?RutFutbolista="+Insumo.RutFutbolista)">Modificar</a></td>
+                                }
+                            }
+                            else
+                            {
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                                <td style="border: 2px solid black"></td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+        </div>
+        <br />
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>

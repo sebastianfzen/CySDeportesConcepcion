@@ -1,0 +1,62 @@
+.navbar{
+    display: block;
+    clear: both;
+    position: fixed !important;
+}
+
+.sesion a:hover {
+    color: white;
+}
+
+.sesion a{
+    color: white;
+    text-decoration: none;
+    content: "\f2f5";
+}
+
+.header{
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 80px;
+}
+
+.foto_perfil{
+    width: 180px;
+    height: 180px;
+    margin-top: 10px;
+}
+
+.container {
+    position: relative;
+}
+
+.container#datosJugador, .container#evNutriJugador, .container#suplementoNutriJugador, .container#insumoNutriJugador {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button{
+    background-color: blueviolet;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 2px solid black;
+}
+
+td, th {
+    padding: 19px;
+    border: 2px solid black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+th {
+    color: blueviolet;
+}
+
+td {
+    white-space: nowrap
+}

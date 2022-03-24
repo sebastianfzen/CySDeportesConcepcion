@@ -1,0 +1,1657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBDeportesConcepcionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ant_familiar">
+          <Key>
+            <PropertyRef Name="id_ant_fam" />
+          </Key>
+          <Property Name="id_ant_fam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cardiopatia" Type="varchar" MaxLength="255" />
+          <Property Name="diabete" Type="varchar" MaxLength="255" />
+          <Property Name="hipertension" Type="varchar" MaxLength="255" />
+          <Property Name="otro" Type="varchar" MaxLength="255" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ant_personales">
+          <Key>
+            <PropertyRef Name="id_ant_per" />
+          </Key>
+          <Property Name="id_ant_per" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="enferme_infancia" Type="varchar" MaxLength="255" />
+          <Property Name="alergias" Type="varchar" MaxLength="255" />
+          <Property Name="operaciones" Type="varchar" MaxLength="255" />
+          <Property Name="traumatismos" Type="varchar" MaxLength="255" />
+          <Property Name="alteracion_visual" Type="varchar" MaxLength="255" />
+          <Property Name="talla" Type="float" />
+          <Property Name="peso" Type="float" />
+          <Property Name="fc" Type="float" />
+          <Property Name="pa" Type="float" />
+          <Property Name="alteracion_postural" Type="varchar" MaxLength="255" />
+          <Property Name="genu_valgo_varu" Type="varchar" MaxLength="255" />
+          <Property Name="pie_plano_valgo" Type="varchar" MaxLength="255" />
+          <Property Name="otro" Type="varchar" MaxLength="255" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomb_categoria" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comentario_nutri">
+          <Key>
+            <PropertyRef Name="id_coment" />
+          </Key>
+          <Property Name="id_coment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripción_com" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_coment" Type="datetime" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cuerpo_tec">
+          <Key>
+            <PropertyRef Name="id_cu_tec" />
+          </Key>
+          <Property Name="id_cu_tec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_ct" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="appaterno_ct" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apmaterno_ct" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email_ct" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono_ct" Type="int" Nullable="false" />
+          <Property Name="estado_ct" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="foto_perfil" Type="varbinary" MaxLength="1" />
+          <Property Name="usuario_rut_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="encuesta">
+          <Key>
+            <PropertyRef Name="id_encuesta" />
+          </Key>
+          <Property Name="id_encuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_encuesta" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_encuesta" Type="datetime" Nullable="false" />
+          <Property Name="fecha_limite_encuesta" Type="datetime" Nullable="false" />
+          <Property Name="estado_encuesta" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="int" />
+          <Property Name="kinesiologo_id_kinesiologo" Type="int" />
+        </EntityType>
+        <EntityType Name="entrenamiento">
+          <Key>
+            <PropertyRef Name="id_entrenamiento" />
+          </Key>
+          <Property Name="id_entrenamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_entr" Type="date" Nullable="false" />
+          <Property Name="volumen_entr" Type="int" Nullable="false" />
+          <Property Name="objetivo_entr" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="comentario" Type="varchar" MaxLength="512" />
+          <Property Name="cuerpo_tec_id_cu_tec" Type="int" Nullable="false" />
+          <Property Name="categoria_id_categoria" Type="int" Nullable="false" />
+          <Property Name="tipo_entrenam_id_tipo_entr" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ev_nutri">
+          <Key>
+            <PropertyRef Name="id_calc_grasa" />
+          </Key>
+          <Property Name="id_calc_grasa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="peso" Type="float" Nullable="false" />
+          <Property Name="talla_estatura" Type="float" Nullable="false" />
+          <Property Name="porcent_masa_adiposa" Type="float" Nullable="false" />
+          <Property Name="kilo_masa_adiposa" Type="float" Nullable="false" />
+          <Property Name="estado_uno" Type="int" Nullable="false" />
+          <Property Name="estado_uno_dos" Type="int" Nullable="false" />
+          <Property Name="porcent_musculo" Type="float" Nullable="false" />
+          <Property Name="kilo_musculo" Type="float" Nullable="false" />
+          <Property Name="estado_dos" Type="int" Nullable="false" />
+          <Property Name="estado_dos_dos" Type="int" Nullable="false" />
+          <Property Name="sumatoria_pliegue" Type="float" Nullable="false" />
+          <Property Name="estado_tres" Type="int" Nullable="false" />
+          <Property Name="imo" Type="float" Nullable="false" />
+          <Property Name="estado_cuatro" Type="int" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="int" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="futbolista">
+          <Key>
+            <PropertyRef Name="id_futbolista" />
+          </Key>
+          <Property Name="id_futbolista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="appaterno_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apmaterno_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="edad_futb" Type="int" Nullable="false" />
+          <Property Name="fecha_nacim_futb" Type="datetime" Nullable="false" />
+          <Property Name="nacionalidad_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="posicion_futb" Type="varchar" MaxLength="255" />
+          <Property Name="email_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="calzado_futb" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_futb" Type="int" Nullable="false" />
+          <Property Name="club_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="temporada_futb" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="anio_futb" Type="int" Nullable="false" />
+          <Property Name="estado_futb" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="foto_perfil" Type="varbinary" MaxLength="1" />
+          <Property Name="usuario_rut_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="categoria_id_categoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hist_clinico">
+          <Key>
+            <PropertyRef Name="id_historial_clinico" />
+          </Key>
+          <Property Name="id_historial_clinico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_lesion" Type="datetime" Nullable="false" />
+          <Property Name="lugar_lesion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="zona_lesion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="relacion_lesion_anterior" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_baja" Type="datetime" Nullable="false" />
+          <Property Name="dias_baja" Type="int" Nullable="false" />
+          <Property Name="examenes" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tratamiento" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="observacion" Type="varchar" MaxLength="255" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+          <Property Name="lesion_id_lesion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="insumo">
+          <Key>
+            <PropertyRef Name="id_insumo" />
+          </Key>
+          <Property Name="id_insumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_insumo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tipo_insumo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cantidad_insumo" Type="int" Nullable="false" />
+          <Property Name="comentarioinsumo" Type="varchar" MaxLength="255" />
+          <Property Name="fecha_insumo" Type="datetime" Nullable="false" />
+          <Property Name="estado_insumo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+          <Property Name="kinesiologo_id_kinesiologo" Type="int" />
+        </EntityType>
+        <EntityType Name="kinesiologo">
+          <Key>
+            <PropertyRef Name="id_kinesiologo" />
+          </Key>
+          <Property Name="id_kinesiologo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_kinesiologo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="appaterno_kine" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apmaterno_kine" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email_kine" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="telefono_kine" Type="int" Nullable="false" />
+          <Property Name="estado_kinesiologo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="usuario_rut_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="foto_perfil" Type="varbinary" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="lesion">
+          <Key>
+            <PropertyRef Name="id_lesion" />
+          </Key>
+          <Property Name="id_lesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomb_lesion" Type="varchar" MaxLength="124" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nutricionista">
+          <Key>
+            <PropertyRef Name="id_nutri" />
+          </Key>
+          <Property Name="id_nutri" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_nutri" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="appaterno_nutri" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="apmaterno_nutri" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email_nutri" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="telefono_nutri" Type="int" Nullable="false" />
+          <Property Name="estado_nutricionista" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="usuario_rut_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="foto_perfil" Type="varbinary" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="pregunta">
+          <Key>
+            <PropertyRef Name="id_pregunta" />
+          </Key>
+          <Property Name="id_pregunta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_pregunta" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_pregunta" Type="datetime" />
+          <Property Name="imagenpregunta" Type="varbinary" MaxLength="1" />
+          <Property Name="encuesta_id_encuesta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="respuesta">
+          <Key>
+            <PropertyRef Name="id_respuesta" />
+          </Key>
+          <Property Name="id_respuesta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion_respuesta" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="fecha_respuesta" Type="datetime" Nullable="false" />
+          <Property Name="encuesta_id_encuesta" Type="int" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="suplemento">
+          <Key>
+            <PropertyRef Name="id_suplemento" />
+          </Key>
+          <Property Name="id_suplemento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="desc_suplemento" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="tipo_suplemento" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="cant_suplemento" Type="int" Nullable="false" />
+          <Property Name="fecha_suplem" Type="datetime" Nullable="false" />
+          <Property Name="estd_suplemento" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="comentariosuplem" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="int" />
+          <Property Name="futbolista_id_futbolista" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_entrenam">
+          <Key>
+            <PropertyRef Name="id_tipo_entr" />
+          </Key>
+          <Property Name="id_tipo_entr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomb_entrenamiento" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="rut_usuario" />
+          </Key>
+          <Property Name="rut_usuario" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="contrasenia" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="ant_familiar_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ant_familiar" Type="Self.ant_familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ant_familiar">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ant_personales_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ant_personales" Type="Self.ant_personales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ant_personales">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_nutri_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="comentario_nutri" Type="Self.comentario_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="comentario_nutri">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cuerpo_tec_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="cuerpo_tec" Type="Self.cuerpo_tec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="cuerpo_tec">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="encuesta_kinesiologo_fk">
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="0..1" />
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kinesiologo">
+              <PropertyRef Name="id_kinesiologo" />
+            </Principal>
+            <Dependent Role="encuesta">
+              <PropertyRef Name="kinesiologo_id_kinesiologo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="encuesta_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="0..1" />
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="encuesta">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="categoria_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_cuerpo_tec_fk">
+          <End Role="cuerpo_tec" Type="Self.cuerpo_tec" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuerpo_tec">
+              <PropertyRef Name="id_cu_tec" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="cuerpo_tec_id_cu_tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_tipo_entrenam_fk">
+          <End Role="tipo_entrenam" Type="Self.tipo_entrenam" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_entrenam">
+              <PropertyRef Name="id_tipo_entr" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="tipo_entrenam_id_tipo_entr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ev_nutri_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ev_nutri" Type="Self.ev_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ev_nutri">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ev_nutri_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="1" />
+          <End Role="ev_nutri" Type="Self.ev_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="ev_nutri">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="futbolista_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="futbolista">
+              <PropertyRef Name="categoria_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="futbolista_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="futbolista">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hist_clinico_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="hist_clinico" Type="Self.hist_clinico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="hist_clinico">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hist_clinico_lesion_fk">
+          <End Role="lesion" Type="Self.lesion" Multiplicity="1" />
+          <End Role="hist_clinico" Type="Self.hist_clinico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lesion">
+              <PropertyRef Name="id_lesion" />
+            </Principal>
+            <Dependent Role="hist_clinico">
+              <PropertyRef Name="lesion_id_lesion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="insumo_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="insumo" Type="Self.insumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="insumo">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="insumo_kinesiologo_fk">
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="0..1" />
+          <End Role="insumo" Type="Self.insumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kinesiologo">
+              <PropertyRef Name="id_kinesiologo" />
+            </Principal>
+            <Dependent Role="insumo">
+              <PropertyRef Name="kinesiologo_id_kinesiologo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kinesiologo_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="kinesiologo">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="nutricionista_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="nutricionista">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pregunta_encuesta_fk">
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
+          <End Role="pregunta" Type="Self.pregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="encuesta">
+              <PropertyRef Name="id_encuesta" />
+            </Principal>
+            <Dependent Role="pregunta">
+              <PropertyRef Name="encuesta_id_encuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="respuesta_encuesta_fk">
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
+          <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="encuesta">
+              <PropertyRef Name="id_encuesta" />
+            </Principal>
+            <Dependent Role="respuesta">
+              <PropertyRef Name="encuesta_id_encuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="respuesta_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="respuesta">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="suplemento_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="suplemento" Type="Self.suplemento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="suplemento">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="suplemento_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="0..1" />
+          <End Role="suplemento" Type="Self.suplemento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="suplemento">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBDeportesConcepcionModelStoreContainer">
+          <EntitySet Name="ant_familiar" EntityType="Self.ant_familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ant_personales" EntityType="Self.ant_personales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comentario_nutri" EntityType="Self.comentario_nutri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cuerpo_tec" EntityType="Self.cuerpo_tec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="encuesta" EntityType="Self.encuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entrenamiento" EntityType="Self.entrenamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ev_nutri" EntityType="Self.ev_nutri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="futbolista" EntityType="Self.futbolista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hist_clinico" EntityType="Self.hist_clinico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="insumo" EntityType="Self.insumo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kinesiologo" EntityType="Self.kinesiologo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lesion" EntityType="Self.lesion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nutricionista" EntityType="Self.nutricionista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pregunta" EntityType="Self.pregunta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="respuesta" EntityType="Self.respuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="suplemento" EntityType="Self.suplemento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_entrenam" EntityType="Self.tipo_entrenam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ant_familiar_futbolista_fk" Association="Self.ant_familiar_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ant_familiar" EntitySet="ant_familiar" />
+          </AssociationSet>
+          <AssociationSet Name="ant_personales_futbolista_fk" Association="Self.ant_personales_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ant_personales" EntitySet="ant_personales" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_nutri_futbolista_fk" Association="Self.comentario_nutri_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="comentario_nutri" EntitySet="comentario_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="cuerpo_tec_usuario_fk" Association="Self.cuerpo_tec_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="cuerpo_tec" EntitySet="cuerpo_tec" />
+          </AssociationSet>
+          <AssociationSet Name="encuesta_kinesiologo_fk" Association="Self.encuesta_kinesiologo_fk">
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+            <End Role="encuesta" EntitySet="encuesta" />
+          </AssociationSet>
+          <AssociationSet Name="encuesta_nutricionista_fk" Association="Self.encuesta_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="encuesta" EntitySet="encuesta" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_categoria_fk" Association="Self.entrenamiento_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_cuerpo_tec_fk" Association="Self.entrenamiento_cuerpo_tec_fk">
+            <End Role="cuerpo_tec" EntitySet="cuerpo_tec" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_tipo_entrenam_fk" Association="Self.entrenamiento_tipo_entrenam_fk">
+            <End Role="tipo_entrenam" EntitySet="tipo_entrenam" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="ev_nutri_futbolista_fk" Association="Self.ev_nutri_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ev_nutri" EntitySet="ev_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="ev_nutri_nutricionista_fk" Association="Self.ev_nutri_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="ev_nutri" EntitySet="ev_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="futbolista_categoria_fk" Association="Self.futbolista_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="futbolista" EntitySet="futbolista" />
+          </AssociationSet>
+          <AssociationSet Name="futbolista_usuario_fk" Association="Self.futbolista_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="futbolista" EntitySet="futbolista" />
+          </AssociationSet>
+          <AssociationSet Name="hist_clinico_futbolista_fk" Association="Self.hist_clinico_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="hist_clinico" EntitySet="hist_clinico" />
+          </AssociationSet>
+          <AssociationSet Name="hist_clinico_lesion_fk" Association="Self.hist_clinico_lesion_fk">
+            <End Role="lesion" EntitySet="lesion" />
+            <End Role="hist_clinico" EntitySet="hist_clinico" />
+          </AssociationSet>
+          <AssociationSet Name="insumo_futbolista_fk" Association="Self.insumo_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="insumo" EntitySet="insumo" />
+          </AssociationSet>
+          <AssociationSet Name="insumo_kinesiologo_fk" Association="Self.insumo_kinesiologo_fk">
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+            <End Role="insumo" EntitySet="insumo" />
+          </AssociationSet>
+          <AssociationSet Name="kinesiologo_usuario_fk" Association="Self.kinesiologo_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+          </AssociationSet>
+          <AssociationSet Name="nutricionista_usuario_fk" Association="Self.nutricionista_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="nutricionista" EntitySet="nutricionista" />
+          </AssociationSet>
+          <AssociationSet Name="pregunta_encuesta_fk" Association="Self.pregunta_encuesta_fk">
+            <End Role="encuesta" EntitySet="encuesta" />
+            <End Role="pregunta" EntitySet="pregunta" />
+          </AssociationSet>
+          <AssociationSet Name="respuesta_encuesta_fk" Association="Self.respuesta_encuesta_fk">
+            <End Role="encuesta" EntitySet="encuesta" />
+            <End Role="respuesta" EntitySet="respuesta" />
+          </AssociationSet>
+          <AssociationSet Name="respuesta_futbolista_fk" Association="Self.respuesta_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="respuesta" EntitySet="respuesta" />
+          </AssociationSet>
+          <AssociationSet Name="suplemento_futbolista_fk" Association="Self.suplemento_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="suplemento" EntitySet="suplemento" />
+          </AssociationSet>
+          <AssociationSet Name="suplemento_nutricionista_fk" Association="Self.suplemento_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="suplemento" EntitySet="suplemento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBDeportesConcepcionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ant_familiar">
+          <Key>
+            <PropertyRef Name="id_ant_fam" />
+          </Key>
+          <Property Name="id_ant_fam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cardiopatia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="diabete" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="hipertension" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="otro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.ant_familiar_futbolista_fk" FromRole="ant_familiar" ToRole="futbolista" />
+        </EntityType>
+        <EntityType Name="ant_personales">
+          <Key>
+            <PropertyRef Name="id_ant_per" />
+          </Key>
+          <Property Name="id_ant_per" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="enferme_infancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="alergias" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="operaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="traumatismos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="alteracion_visual" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="talla" Type="Double" />
+          <Property Name="peso" Type="Double" />
+          <Property Name="fc" Type="Double" />
+          <Property Name="pa" Type="Double" />
+          <Property Name="alteracion_postural" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="genu_valgo_varu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pie_plano_valgo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="otro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.ant_personales_futbolista_fk" FromRole="ant_personales" ToRole="futbolista" />
+        </EntityType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomb_categoria" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="entrenamiento" Relationship="Self.entrenamiento_categoria_fk" FromRole="categoria" ToRole="entrenamiento" />
+          <NavigationProperty Name="futbolista" Relationship="Self.futbolista_categoria_fk" FromRole="categoria" ToRole="futbolista" />
+        </EntityType>
+        <EntityType Name="comentario_nutri">
+          <Key>
+            <PropertyRef Name="id_coment" />
+          </Key>
+          <Property Name="id_coment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripción_com" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_coment" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.comentario_nutri_futbolista_fk" FromRole="comentario_nutri" ToRole="futbolista" />
+        </EntityType>
+        <EntityType Name="cuerpo_tec">
+          <Key>
+            <PropertyRef Name="id_cu_tec" />
+          </Key>
+          <Property Name="id_cu_tec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_ct" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="appaterno_ct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apmaterno_ct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_ct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_ct" Type="Int32" Nullable="false" />
+          <Property Name="estado_ct" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="foto_perfil" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="usuario_rut_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usuario" Relationship="Self.cuerpo_tec_usuario_fk" FromRole="cuerpo_tec" ToRole="usuario" />
+          <NavigationProperty Name="entrenamiento" Relationship="Self.entrenamiento_cuerpo_tec_fk" FromRole="cuerpo_tec" ToRole="entrenamiento" />
+        </EntityType>
+        <EntityType Name="encuesta">
+          <Key>
+            <PropertyRef Name="id_encuesta" />
+          </Key>
+          <Property Name="id_encuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_encuesta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_encuesta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_limite_encuesta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado_encuesta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="Int32" />
+          <Property Name="kinesiologo_id_kinesiologo" Type="Int32" />
+          <NavigationProperty Name="kinesiologo" Relationship="Self.encuesta_kinesiologo_fk" FromRole="encuesta" ToRole="kinesiologo" />
+          <NavigationProperty Name="nutricionista" Relationship="Self.encuesta_nutricionista_fk" FromRole="encuesta" ToRole="nutricionista" />
+          <NavigationProperty Name="pregunta" Relationship="Self.pregunta_encuesta_fk" FromRole="encuesta" ToRole="pregunta" />
+          <NavigationProperty Name="respuesta" Relationship="Self.respuesta_encuesta_fk" FromRole="encuesta" ToRole="respuesta" />
+        </EntityType>
+        <EntityType Name="entrenamiento">
+          <Key>
+            <PropertyRef Name="id_entrenamiento" />
+          </Key>
+          <Property Name="id_entrenamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_entr" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="volumen_entr" Type="Int32" Nullable="false" />
+          <Property Name="objetivo_entr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="cuerpo_tec_id_cu_tec" Type="Int32" Nullable="false" />
+          <Property Name="categoria_id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="tipo_entrenam_id_tipo_entr" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categoria" Relationship="Self.entrenamiento_categoria_fk" FromRole="entrenamiento" ToRole="categoria" />
+          <NavigationProperty Name="cuerpo_tec" Relationship="Self.entrenamiento_cuerpo_tec_fk" FromRole="entrenamiento" ToRole="cuerpo_tec" />
+          <NavigationProperty Name="tipo_entrenam" Relationship="Self.entrenamiento_tipo_entrenam_fk" FromRole="entrenamiento" ToRole="tipo_entrenam" />
+        </EntityType>
+        <EntityType Name="ev_nutri">
+          <Key>
+            <PropertyRef Name="id_calc_grasa" />
+          </Key>
+          <Property Name="id_calc_grasa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="talla_estatura" Type="Double" Nullable="false" />
+          <Property Name="porcent_masa_adiposa" Type="Double" Nullable="false" />
+          <Property Name="kilo_masa_adiposa" Type="Double" Nullable="false" />
+          <Property Name="estado_uno" Type="Int32" Nullable="false" />
+          <Property Name="estado_uno_dos" Type="Int32" Nullable="false" />
+          <Property Name="porcent_musculo" Type="Double" Nullable="false" />
+          <Property Name="kilo_musculo" Type="Double" Nullable="false" />
+          <Property Name="estado_dos" Type="Int32" Nullable="false" />
+          <Property Name="estado_dos_dos" Type="Int32" Nullable="false" />
+          <Property Name="sumatoria_pliegue" Type="Double" Nullable="false" />
+          <Property Name="estado_tres" Type="Int32" Nullable="false" />
+          <Property Name="imo" Type="Double" Nullable="false" />
+          <Property Name="estado_cuatro" Type="Int32" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="Int32" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.ev_nutri_futbolista_fk" FromRole="ev_nutri" ToRole="futbolista" />
+          <NavigationProperty Name="nutricionista" Relationship="Self.ev_nutri_nutricionista_fk" FromRole="ev_nutri" ToRole="nutricionista" />
+        </EntityType>
+        <EntityType Name="futbolista">
+          <Key>
+            <PropertyRef Name="id_futbolista" />
+          </Key>
+          <Property Name="id_futbolista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="appaterno_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apmaterno_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad_futb" Type="Int32" Nullable="false" />
+          <Property Name="fecha_nacim_futb" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nacionalidad_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="posicion_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="calzado_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_futb" Type="Int32" Nullable="false" />
+          <Property Name="club_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="temporada_futb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="anio_futb" Type="Int32" Nullable="false" />
+          <Property Name="estado_futb" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="foto_perfil" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="usuario_rut_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="categoria_id_categoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ant_familiar" Relationship="Self.ant_familiar_futbolista_fk" FromRole="futbolista" ToRole="ant_familiar" />
+          <NavigationProperty Name="ant_personales" Relationship="Self.ant_personales_futbolista_fk" FromRole="futbolista" ToRole="ant_personales" />
+          <NavigationProperty Name="categoria" Relationship="Self.futbolista_categoria_fk" FromRole="futbolista" ToRole="categoria" />
+          <NavigationProperty Name="comentario_nutri" Relationship="Self.comentario_nutri_futbolista_fk" FromRole="futbolista" ToRole="comentario_nutri" />
+          <NavigationProperty Name="ev_nutri" Relationship="Self.ev_nutri_futbolista_fk" FromRole="futbolista" ToRole="ev_nutri" />
+          <NavigationProperty Name="usuario" Relationship="Self.futbolista_usuario_fk" FromRole="futbolista" ToRole="usuario" />
+          <NavigationProperty Name="hist_clinico" Relationship="Self.hist_clinico_futbolista_fk" FromRole="futbolista" ToRole="hist_clinico" />
+          <NavigationProperty Name="insumo" Relationship="Self.insumo_futbolista_fk" FromRole="futbolista" ToRole="insumo" />
+          <NavigationProperty Name="respuesta" Relationship="Self.respuesta_futbolista_fk" FromRole="futbolista" ToRole="respuesta" />
+          <NavigationProperty Name="suplemento" Relationship="Self.suplemento_futbolista_fk" FromRole="futbolista" ToRole="suplemento" />
+        </EntityType>
+        <EntityType Name="hist_clinico">
+          <Key>
+            <PropertyRef Name="id_historial_clinico" />
+          </Key>
+          <Property Name="id_historial_clinico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_lesion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lugar_lesion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zona_lesion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="relacion_lesion_anterior" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_baja" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dias_baja" Type="Int32" Nullable="false" />
+          <Property Name="examenes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tratamiento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="observacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <Property Name="lesion_id_lesion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.hist_clinico_futbolista_fk" FromRole="hist_clinico" ToRole="futbolista" />
+          <NavigationProperty Name="lesion" Relationship="Self.hist_clinico_lesion_fk" FromRole="hist_clinico" ToRole="lesion" />
+        </EntityType>
+        <EntityType Name="insumo">
+          <Key>
+            <PropertyRef Name="id_insumo" />
+          </Key>
+          <Property Name="id_insumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_insumo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_insumo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidad_insumo" Type="Int32" Nullable="false" />
+          <Property Name="comentarioinsumo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_insumo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado_insumo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <Property Name="kinesiologo_id_kinesiologo" Type="Int32" />
+          <NavigationProperty Name="futbolista" Relationship="Self.insumo_futbolista_fk" FromRole="insumo" ToRole="futbolista" />
+          <NavigationProperty Name="kinesiologo" Relationship="Self.insumo_kinesiologo_fk" FromRole="insumo" ToRole="kinesiologo" />
+        </EntityType>
+        <EntityType Name="kinesiologo">
+          <Key>
+            <PropertyRef Name="id_kinesiologo" />
+          </Key>
+          <Property Name="id_kinesiologo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_kinesiologo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="appaterno_kine" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apmaterno_kine" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_kine" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_kine" Type="Int32" Nullable="false" />
+          <Property Name="estado_kinesiologo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usuario_rut_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto_perfil" Type="Binary" MaxLength="1" FixedLength="false" />
+          <NavigationProperty Name="encuesta" Relationship="Self.encuesta_kinesiologo_fk" FromRole="kinesiologo" ToRole="encuesta" />
+          <NavigationProperty Name="insumo" Relationship="Self.insumo_kinesiologo_fk" FromRole="kinesiologo" ToRole="insumo" />
+          <NavigationProperty Name="usuario" Relationship="Self.kinesiologo_usuario_fk" FromRole="kinesiologo" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="lesion">
+          <Key>
+            <PropertyRef Name="id_lesion" />
+          </Key>
+          <Property Name="id_lesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomb_lesion" Type="String" MaxLength="124" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="hist_clinico" Relationship="Self.hist_clinico_lesion_fk" FromRole="lesion" ToRole="hist_clinico" />
+        </EntityType>
+        <EntityType Name="nutricionista">
+          <Key>
+            <PropertyRef Name="id_nutri" />
+          </Key>
+          <Property Name="id_nutri" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_nutri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="appaterno_nutri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apmaterno_nutri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_nutri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_nutri" Type="Int32" Nullable="false" />
+          <Property Name="estado_nutricionista" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="usuario_rut_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto_perfil" Type="Binary" MaxLength="1" FixedLength="false" />
+          <NavigationProperty Name="encuesta" Relationship="Self.encuesta_nutricionista_fk" FromRole="nutricionista" ToRole="encuesta" />
+          <NavigationProperty Name="ev_nutri" Relationship="Self.ev_nutri_nutricionista_fk" FromRole="nutricionista" ToRole="ev_nutri" />
+          <NavigationProperty Name="usuario" Relationship="Self.nutricionista_usuario_fk" FromRole="nutricionista" ToRole="usuario" />
+          <NavigationProperty Name="suplemento" Relationship="Self.suplemento_nutricionista_fk" FromRole="nutricionista" ToRole="suplemento" />
+        </EntityType>
+        <EntityType Name="pregunta">
+          <Key>
+            <PropertyRef Name="id_pregunta" />
+          </Key>
+          <Property Name="id_pregunta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_pregunta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_pregunta" Type="DateTime" Precision="3" />
+          <Property Name="imagenpregunta" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="encuesta_id_encuesta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="encuesta" Relationship="Self.pregunta_encuesta_fk" FromRole="pregunta" ToRole="encuesta" />
+        </EntityType>
+        <EntityType Name="respuesta">
+          <Key>
+            <PropertyRef Name="id_respuesta" />
+          </Key>
+          <Property Name="id_respuesta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion_respuesta" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_respuesta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="encuesta_id_encuesta" Type="Int32" Nullable="false" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="encuesta" Relationship="Self.respuesta_encuesta_fk" FromRole="respuesta" ToRole="encuesta" />
+          <NavigationProperty Name="futbolista" Relationship="Self.respuesta_futbolista_fk" FromRole="respuesta" ToRole="futbolista" />
+        </EntityType>
+        <EntityType Name="suplemento">
+          <Key>
+            <PropertyRef Name="id_suplemento" />
+          </Key>
+          <Property Name="id_suplemento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desc_suplemento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_suplemento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cant_suplemento" Type="Int32" Nullable="false" />
+          <Property Name="fecha_suplem" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estd_suplemento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comentariosuplem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nutricionista_id_nutri" Type="Int32" />
+          <Property Name="futbolista_id_futbolista" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="futbolista" Relationship="Self.suplemento_futbolista_fk" FromRole="suplemento" ToRole="futbolista" />
+          <NavigationProperty Name="nutricionista" Relationship="Self.suplemento_nutricionista_fk" FromRole="suplemento" ToRole="nutricionista" />
+        </EntityType>
+        <EntityType Name="tipo_entrenam">
+          <Key>
+            <PropertyRef Name="id_tipo_entr" />
+          </Key>
+          <Property Name="id_tipo_entr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomb_entrenamiento" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="entrenamiento" Relationship="Self.entrenamiento_tipo_entrenam_fk" FromRole="tipo_entrenam" ToRole="entrenamiento" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="rut_usuario" />
+          </Key>
+          <Property Name="rut_usuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="contrasenia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cuerpo_tec" Relationship="Self.cuerpo_tec_usuario_fk" FromRole="usuario" ToRole="cuerpo_tec" />
+          <NavigationProperty Name="futbolista" Relationship="Self.futbolista_usuario_fk" FromRole="usuario" ToRole="futbolista" />
+          <NavigationProperty Name="kinesiologo" Relationship="Self.kinesiologo_usuario_fk" FromRole="usuario" ToRole="kinesiologo" />
+          <NavigationProperty Name="nutricionista" Relationship="Self.nutricionista_usuario_fk" FromRole="usuario" ToRole="nutricionista" />
+        </EntityType>
+        <Association Name="ant_familiar_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ant_familiar" Type="Self.ant_familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ant_familiar">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ant_personales_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ant_personales" Type="Self.ant_personales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ant_personales">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="categoria_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="futbolista_categoria_fk">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="1" />
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="futbolista">
+              <PropertyRef Name="categoria_id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="comentario_nutri_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="comentario_nutri" Type="Self.comentario_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="comentario_nutri">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cuerpo_tec_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="cuerpo_tec" Type="Self.cuerpo_tec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="cuerpo_tec">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_cuerpo_tec_fk">
+          <End Role="cuerpo_tec" Type="Self.cuerpo_tec" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuerpo_tec">
+              <PropertyRef Name="id_cu_tec" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="cuerpo_tec_id_cu_tec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="encuesta_kinesiologo_fk">
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="0..1" />
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kinesiologo">
+              <PropertyRef Name="id_kinesiologo" />
+            </Principal>
+            <Dependent Role="encuesta">
+              <PropertyRef Name="kinesiologo_id_kinesiologo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="encuesta_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="0..1" />
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="encuesta">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pregunta_encuesta_fk">
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
+          <End Role="pregunta" Type="Self.pregunta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="encuesta">
+              <PropertyRef Name="id_encuesta" />
+            </Principal>
+            <Dependent Role="pregunta">
+              <PropertyRef Name="encuesta_id_encuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="respuesta_encuesta_fk">
+          <End Role="encuesta" Type="Self.encuesta" Multiplicity="1" />
+          <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="encuesta">
+              <PropertyRef Name="id_encuesta" />
+            </Principal>
+            <Dependent Role="respuesta">
+              <PropertyRef Name="encuesta_id_encuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entrenamiento_tipo_entrenam_fk">
+          <End Role="tipo_entrenam" Type="Self.tipo_entrenam" Multiplicity="1" />
+          <End Role="entrenamiento" Type="Self.entrenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_entrenam">
+              <PropertyRef Name="id_tipo_entr" />
+            </Principal>
+            <Dependent Role="entrenamiento">
+              <PropertyRef Name="tipo_entrenam_id_tipo_entr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ev_nutri_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="ev_nutri" Type="Self.ev_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="ev_nutri">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ev_nutri_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="1" />
+          <End Role="ev_nutri" Type="Self.ev_nutri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="ev_nutri">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="futbolista_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="futbolista">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hist_clinico_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="hist_clinico" Type="Self.hist_clinico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="hist_clinico">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="insumo_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="insumo" Type="Self.insumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="insumo">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="respuesta_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="respuesta" Type="Self.respuesta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="respuesta">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="suplemento_futbolista_fk">
+          <End Role="futbolista" Type="Self.futbolista" Multiplicity="1" />
+          <End Role="suplemento" Type="Self.suplemento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="futbolista">
+              <PropertyRef Name="id_futbolista" />
+            </Principal>
+            <Dependent Role="suplemento">
+              <PropertyRef Name="futbolista_id_futbolista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="hist_clinico_lesion_fk">
+          <End Role="lesion" Type="Self.lesion" Multiplicity="1" />
+          <End Role="hist_clinico" Type="Self.hist_clinico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lesion">
+              <PropertyRef Name="id_lesion" />
+            </Principal>
+            <Dependent Role="hist_clinico">
+              <PropertyRef Name="lesion_id_lesion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="insumo_kinesiologo_fk">
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="0..1" />
+          <End Role="insumo" Type="Self.insumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kinesiologo">
+              <PropertyRef Name="id_kinesiologo" />
+            </Principal>
+            <Dependent Role="insumo">
+              <PropertyRef Name="kinesiologo_id_kinesiologo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="kinesiologo_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="kinesiologo" Type="Self.kinesiologo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="kinesiologo">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="nutricionista_usuario_fk">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="rut_usuario" />
+            </Principal>
+            <Dependent Role="nutricionista">
+              <PropertyRef Name="usuario_rut_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="suplemento_nutricionista_fk">
+          <End Role="nutricionista" Type="Self.nutricionista" Multiplicity="0..1" />
+          <End Role="suplemento" Type="Self.suplemento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nutricionista">
+              <PropertyRef Name="id_nutri" />
+            </Principal>
+            <Dependent Role="suplemento">
+              <PropertyRef Name="nutricionista_id_nutri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ant_familiar" EntityType="Self.ant_familiar" />
+          <EntitySet Name="ant_personales" EntityType="Self.ant_personales" />
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="comentario_nutri" EntityType="Self.comentario_nutri" />
+          <EntitySet Name="cuerpo_tec" EntityType="Self.cuerpo_tec" />
+          <EntitySet Name="encuesta" EntityType="Self.encuesta" />
+          <EntitySet Name="entrenamiento" EntityType="Self.entrenamiento" />
+          <EntitySet Name="ev_nutri" EntityType="Self.ev_nutri" />
+          <EntitySet Name="futbolista" EntityType="Self.futbolista" />
+          <EntitySet Name="hist_clinico" EntityType="Self.hist_clinico" />
+          <EntitySet Name="insumo" EntityType="Self.insumo" />
+          <EntitySet Name="kinesiologo" EntityType="Self.kinesiologo" />
+          <EntitySet Name="lesion" EntityType="Self.lesion" />
+          <EntitySet Name="nutricionista" EntityType="Self.nutricionista" />
+          <EntitySet Name="pregunta" EntityType="Self.pregunta" />
+          <EntitySet Name="respuesta" EntityType="Self.respuesta" />
+          <EntitySet Name="suplemento" EntityType="Self.suplemento" />
+          <EntitySet Name="tipo_entrenam" EntityType="Self.tipo_entrenam" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="ant_familiar_futbolista_fk" Association="Self.ant_familiar_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ant_familiar" EntitySet="ant_familiar" />
+          </AssociationSet>
+          <AssociationSet Name="ant_personales_futbolista_fk" Association="Self.ant_personales_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ant_personales" EntitySet="ant_personales" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_categoria_fk" Association="Self.entrenamiento_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="futbolista_categoria_fk" Association="Self.futbolista_categoria_fk">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="futbolista" EntitySet="futbolista" />
+          </AssociationSet>
+          <AssociationSet Name="comentario_nutri_futbolista_fk" Association="Self.comentario_nutri_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="comentario_nutri" EntitySet="comentario_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="cuerpo_tec_usuario_fk" Association="Self.cuerpo_tec_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="cuerpo_tec" EntitySet="cuerpo_tec" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_cuerpo_tec_fk" Association="Self.entrenamiento_cuerpo_tec_fk">
+            <End Role="cuerpo_tec" EntitySet="cuerpo_tec" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="encuesta_kinesiologo_fk" Association="Self.encuesta_kinesiologo_fk">
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+            <End Role="encuesta" EntitySet="encuesta" />
+          </AssociationSet>
+          <AssociationSet Name="encuesta_nutricionista_fk" Association="Self.encuesta_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="encuesta" EntitySet="encuesta" />
+          </AssociationSet>
+          <AssociationSet Name="pregunta_encuesta_fk" Association="Self.pregunta_encuesta_fk">
+            <End Role="encuesta" EntitySet="encuesta" />
+            <End Role="pregunta" EntitySet="pregunta" />
+          </AssociationSet>
+          <AssociationSet Name="respuesta_encuesta_fk" Association="Self.respuesta_encuesta_fk">
+            <End Role="encuesta" EntitySet="encuesta" />
+            <End Role="respuesta" EntitySet="respuesta" />
+          </AssociationSet>
+          <AssociationSet Name="entrenamiento_tipo_entrenam_fk" Association="Self.entrenamiento_tipo_entrenam_fk">
+            <End Role="tipo_entrenam" EntitySet="tipo_entrenam" />
+            <End Role="entrenamiento" EntitySet="entrenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="ev_nutri_futbolista_fk" Association="Self.ev_nutri_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="ev_nutri" EntitySet="ev_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="ev_nutri_nutricionista_fk" Association="Self.ev_nutri_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="ev_nutri" EntitySet="ev_nutri" />
+          </AssociationSet>
+          <AssociationSet Name="futbolista_usuario_fk" Association="Self.futbolista_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="futbolista" EntitySet="futbolista" />
+          </AssociationSet>
+          <AssociationSet Name="hist_clinico_futbolista_fk" Association="Self.hist_clinico_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="hist_clinico" EntitySet="hist_clinico" />
+          </AssociationSet>
+          <AssociationSet Name="insumo_futbolista_fk" Association="Self.insumo_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="insumo" EntitySet="insumo" />
+          </AssociationSet>
+          <AssociationSet Name="respuesta_futbolista_fk" Association="Self.respuesta_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="respuesta" EntitySet="respuesta" />
+          </AssociationSet>
+          <AssociationSet Name="suplemento_futbolista_fk" Association="Self.suplemento_futbolista_fk">
+            <End Role="futbolista" EntitySet="futbolista" />
+            <End Role="suplemento" EntitySet="suplemento" />
+          </AssociationSet>
+          <AssociationSet Name="hist_clinico_lesion_fk" Association="Self.hist_clinico_lesion_fk">
+            <End Role="lesion" EntitySet="lesion" />
+            <End Role="hist_clinico" EntitySet="hist_clinico" />
+          </AssociationSet>
+          <AssociationSet Name="insumo_kinesiologo_fk" Association="Self.insumo_kinesiologo_fk">
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+            <End Role="insumo" EntitySet="insumo" />
+          </AssociationSet>
+          <AssociationSet Name="kinesiologo_usuario_fk" Association="Self.kinesiologo_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="kinesiologo" EntitySet="kinesiologo" />
+          </AssociationSet>
+          <AssociationSet Name="nutricionista_usuario_fk" Association="Self.nutricionista_usuario_fk">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="nutricionista" EntitySet="nutricionista" />
+          </AssociationSet>
+          <AssociationSet Name="suplemento_nutricionista_fk" Association="Self.suplemento_nutricionista_fk">
+            <End Role="nutricionista" EntitySet="nutricionista" />
+            <End Role="suplemento" EntitySet="suplemento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBDeportesConcepcionModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="ant_familiar">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.ant_familiar">
+              <MappingFragment StoreEntitySet="ant_familiar">
+                <ScalarProperty Name="id_ant_fam" ColumnName="id_ant_fam" />
+                <ScalarProperty Name="cardiopatia" ColumnName="cardiopatia" />
+                <ScalarProperty Name="diabete" ColumnName="diabete" />
+                <ScalarProperty Name="hipertension" ColumnName="hipertension" />
+                <ScalarProperty Name="otro" ColumnName="otro" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ant_personales">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.ant_personales">
+              <MappingFragment StoreEntitySet="ant_personales">
+                <ScalarProperty Name="id_ant_per" ColumnName="id_ant_per" />
+                <ScalarProperty Name="enferme_infancia" ColumnName="enferme_infancia" />
+                <ScalarProperty Name="alergias" ColumnName="alergias" />
+                <ScalarProperty Name="operaciones" ColumnName="operaciones" />
+                <ScalarProperty Name="traumatismos" ColumnName="traumatismos" />
+                <ScalarProperty Name="alteracion_visual" ColumnName="alteracion_visual" />
+                <ScalarProperty Name="talla" ColumnName="talla" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="fc" ColumnName="fc" />
+                <ScalarProperty Name="pa" ColumnName="pa" />
+                <ScalarProperty Name="alteracion_postural" ColumnName="alteracion_postural" />
+                <ScalarProperty Name="genu_valgo_varu" ColumnName="genu_valgo_varu" />
+                <ScalarProperty Name="pie_plano_valgo" ColumnName="pie_plano_valgo" />
+                <ScalarProperty Name="otro" ColumnName="otro" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nomb_categoria" ColumnName="nomb_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentario_nutri">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.comentario_nutri">
+              <MappingFragment StoreEntitySet="comentario_nutri">
+                <ScalarProperty Name="id_coment" ColumnName="id_coment" />
+                <ScalarProperty Name="descripción_com" ColumnName="descripción_com" />
+                <ScalarProperty Name="fecha_coment" ColumnName="fecha_coment" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuerpo_tec">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.cuerpo_tec">
+              <MappingFragment StoreEntitySet="cuerpo_tec">
+                <ScalarProperty Name="id_cu_tec" ColumnName="id_cu_tec" />
+                <ScalarProperty Name="nom_ct" ColumnName="nom_ct" />
+                <ScalarProperty Name="appaterno_ct" ColumnName="appaterno_ct" />
+                <ScalarProperty Name="apmaterno_ct" ColumnName="apmaterno_ct" />
+                <ScalarProperty Name="email_ct" ColumnName="email_ct" />
+                <ScalarProperty Name="telefono_ct" ColumnName="telefono_ct" />
+                <ScalarProperty Name="estado_ct" ColumnName="estado_ct" />
+                <ScalarProperty Name="foto_perfil" ColumnName="foto_perfil" />
+                <ScalarProperty Name="usuario_rut_usuario" ColumnName="usuario_rut_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="encuesta">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.encuesta">
+              <MappingFragment StoreEntitySet="encuesta">
+                <ScalarProperty Name="id_encuesta" ColumnName="id_encuesta" />
+                <ScalarProperty Name="descripcion_encuesta" ColumnName="descripcion_encuesta" />
+                <ScalarProperty Name="fecha_encuesta" ColumnName="fecha_encuesta" />
+                <ScalarProperty Name="fecha_limite_encuesta" ColumnName="fecha_limite_encuesta" />
+                <ScalarProperty Name="estado_encuesta" ColumnName="estado_encuesta" />
+                <ScalarProperty Name="nutricionista_id_nutri" ColumnName="nutricionista_id_nutri" />
+                <ScalarProperty Name="kinesiologo_id_kinesiologo" ColumnName="kinesiologo_id_kinesiologo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entrenamiento">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.entrenamiento">
+              <MappingFragment StoreEntitySet="entrenamiento">
+                <ScalarProperty Name="id_entrenamiento" ColumnName="id_entrenamiento" />
+                <ScalarProperty Name="fecha_entr" ColumnName="fecha_entr" />
+                <ScalarProperty Name="volumen_entr" ColumnName="volumen_entr" />
+                <ScalarProperty Name="objetivo_entr" ColumnName="objetivo_entr" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="cuerpo_tec_id_cu_tec" ColumnName="cuerpo_tec_id_cu_tec" />
+                <ScalarProperty Name="categoria_id_categoria" ColumnName="categoria_id_categoria" />
+                <ScalarProperty Name="tipo_entrenam_id_tipo_entr" ColumnName="tipo_entrenam_id_tipo_entr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ev_nutri">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.ev_nutri">
+              <MappingFragment StoreEntitySet="ev_nutri">
+                <ScalarProperty Name="id_calc_grasa" ColumnName="id_calc_grasa" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="talla_estatura" ColumnName="talla_estatura" />
+                <ScalarProperty Name="porcent_masa_adiposa" ColumnName="porcent_masa_adiposa" />
+                <ScalarProperty Name="kilo_masa_adiposa" ColumnName="kilo_masa_adiposa" />
+                <ScalarProperty Name="estado_uno" ColumnName="estado_uno" />
+                <ScalarProperty Name="estado_uno_dos" ColumnName="estado_uno_dos" />
+                <ScalarProperty Name="porcent_musculo" ColumnName="porcent_musculo" />
+                <ScalarProperty Name="kilo_musculo" ColumnName="kilo_musculo" />
+                <ScalarProperty Name="estado_dos" ColumnName="estado_dos" />
+                <ScalarProperty Name="estado_dos_dos" ColumnName="estado_dos_dos" />
+                <ScalarProperty Name="sumatoria_pliegue" ColumnName="sumatoria_pliegue" />
+                <ScalarProperty Name="estado_tres" ColumnName="estado_tres" />
+                <ScalarProperty Name="imo" ColumnName="imo" />
+                <ScalarProperty Name="estado_cuatro" ColumnName="estado_cuatro" />
+                <ScalarProperty Name="nutricionista_id_nutri" ColumnName="nutricionista_id_nutri" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="futbolista">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.futbolista">
+              <MappingFragment StoreEntitySet="futbolista">
+                <ScalarProperty Name="id_futbolista" ColumnName="id_futbolista" />
+                <ScalarProperty Name="nom_futb" ColumnName="nom_futb" />
+                <ScalarProperty Name="appaterno_futb" ColumnName="appaterno_futb" />
+                <ScalarProperty Name="apmaterno_futb" ColumnName="apmaterno_futb" />
+                <ScalarProperty Name="edad_futb" ColumnName="edad_futb" />
+                <ScalarProperty Name="fecha_nacim_futb" ColumnName="fecha_nacim_futb" />
+                <ScalarProperty Name="nacionalidad_futb" ColumnName="nacionalidad_futb" />
+                <ScalarProperty Name="posicion_futb" ColumnName="posicion_futb" />
+                <ScalarProperty Name="email_futb" ColumnName="email_futb" />
+                <ScalarProperty Name="calzado_futb" ColumnName="calzado_futb" />
+                <ScalarProperty Name="telefono_futb" ColumnName="telefono_futb" />
+                <ScalarProperty Name="club_futb" ColumnName="club_futb" />
+                <ScalarProperty Name="temporada_futb" ColumnName="temporada_futb" />
+                <ScalarProperty Name="anio_futb" ColumnName="anio_futb" />
+                <ScalarProperty Name="estado_futb" ColumnName="estado_futb" />
+                <ScalarProperty Name="foto_perfil" ColumnName="foto_perfil" />
+                <ScalarProperty Name="usuario_rut_usuario" ColumnName="usuario_rut_usuario" />
+                <ScalarProperty Name="categoria_id_categoria" ColumnName="categoria_id_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hist_clinico">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.hist_clinico">
+              <MappingFragment StoreEntitySet="hist_clinico">
+                <ScalarProperty Name="id_historial_clinico" ColumnName="id_historial_clinico" />
+                <ScalarProperty Name="fecha_lesion" ColumnName="fecha_lesion" />
+                <ScalarProperty Name="lugar_lesion" ColumnName="lugar_lesion" />
+                <ScalarProperty Name="zona_lesion" ColumnName="zona_lesion" />
+                <ScalarProperty Name="relacion_lesion_anterior" ColumnName="relacion_lesion_anterior" />
+                <ScalarProperty Name="fecha_baja" ColumnName="fecha_baja" />
+                <ScalarProperty Name="dias_baja" ColumnName="dias_baja" />
+                <ScalarProperty Name="examenes" ColumnName="examenes" />
+                <ScalarProperty Name="tratamiento" ColumnName="tratamiento" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+                <ScalarProperty Name="lesion_id_lesion" ColumnName="lesion_id_lesion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="insumo">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.insumo">
+              <MappingFragment StoreEntitySet="insumo">
+                <ScalarProperty Name="id_insumo" ColumnName="id_insumo" />
+                <ScalarProperty Name="descripcion_insumo" ColumnName="descripcion_insumo" />
+                <ScalarProperty Name="tipo_insumo" ColumnName="tipo_insumo" />
+                <ScalarProperty Name="cantidad_insumo" ColumnName="cantidad_insumo" />
+                <ScalarProperty Name="comentarioinsumo" ColumnName="comentarioinsumo" />
+                <ScalarProperty Name="fecha_insumo" ColumnName="fecha_insumo" />
+                <ScalarProperty Name="estado_insumo" ColumnName="estado_insumo" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+                <ScalarProperty Name="kinesiologo_id_kinesiologo" ColumnName="kinesiologo_id_kinesiologo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kinesiologo">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.kinesiologo">
+              <MappingFragment StoreEntitySet="kinesiologo">
+                <ScalarProperty Name="id_kinesiologo" ColumnName="id_kinesiologo" />
+                <ScalarProperty Name="nom_kinesiologo" ColumnName="nom_kinesiologo" />
+                <ScalarProperty Name="appaterno_kine" ColumnName="appaterno_kine" />
+                <ScalarProperty Name="apmaterno_kine" ColumnName="apmaterno_kine" />
+                <ScalarProperty Name="email_kine" ColumnName="email_kine" />
+                <ScalarProperty Name="telefono_kine" ColumnName="telefono_kine" />
+                <ScalarProperty Name="estado_kinesiologo" ColumnName="estado_kinesiologo" />
+                <ScalarProperty Name="usuario_rut_usuario" ColumnName="usuario_rut_usuario" />
+                <ScalarProperty Name="foto_perfil" ColumnName="foto_perfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lesion">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.lesion">
+              <MappingFragment StoreEntitySet="lesion">
+                <ScalarProperty Name="id_lesion" ColumnName="id_lesion" />
+                <ScalarProperty Name="nomb_lesion" ColumnName="nomb_lesion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nutricionista">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.nutricionista">
+              <MappingFragment StoreEntitySet="nutricionista">
+                <ScalarProperty Name="id_nutri" ColumnName="id_nutri" />
+                <ScalarProperty Name="nom_nutri" ColumnName="nom_nutri" />
+                <ScalarProperty Name="appaterno_nutri" ColumnName="appaterno_nutri" />
+                <ScalarProperty Name="apmaterno_nutri" ColumnName="apmaterno_nutri" />
+                <ScalarProperty Name="email_nutri" ColumnName="email_nutri" />
+                <ScalarProperty Name="telefono_nutri" ColumnName="telefono_nutri" />
+                <ScalarProperty Name="estado_nutricionista" ColumnName="estado_nutricionista" />
+                <ScalarProperty Name="usuario_rut_usuario" ColumnName="usuario_rut_usuario" />
+                <ScalarProperty Name="foto_perfil" ColumnName="foto_perfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pregunta">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.pregunta">
+              <MappingFragment StoreEntitySet="pregunta">
+                <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+                <ScalarProperty Name="descripcion_pregunta" ColumnName="descripcion_pregunta" />
+                <ScalarProperty Name="fecha_pregunta" ColumnName="fecha_pregunta" />
+                <ScalarProperty Name="imagenpregunta" ColumnName="imagenpregunta" />
+                <ScalarProperty Name="encuesta_id_encuesta" ColumnName="encuesta_id_encuesta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="respuesta">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.respuesta">
+              <MappingFragment StoreEntitySet="respuesta">
+                <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+                <ScalarProperty Name="descripcion_respuesta" ColumnName="descripcion_respuesta" />
+                <ScalarProperty Name="fecha_respuesta" ColumnName="fecha_respuesta" />
+                <ScalarProperty Name="encuesta_id_encuesta" ColumnName="encuesta_id_encuesta" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suplemento">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.suplemento">
+              <MappingFragment StoreEntitySet="suplemento">
+                <ScalarProperty Name="id_suplemento" ColumnName="id_suplemento" />
+                <ScalarProperty Name="desc_suplemento" ColumnName="desc_suplemento" />
+                <ScalarProperty Name="tipo_suplemento" ColumnName="tipo_suplemento" />
+                <ScalarProperty Name="cant_suplemento" ColumnName="cant_suplemento" />
+                <ScalarProperty Name="fecha_suplem" ColumnName="fecha_suplem" />
+                <ScalarProperty Name="estd_suplemento" ColumnName="estd_suplemento" />
+                <ScalarProperty Name="comentariosuplem" ColumnName="comentariosuplem" />
+                <ScalarProperty Name="nutricionista_id_nutri" ColumnName="nutricionista_id_nutri" />
+                <ScalarProperty Name="futbolista_id_futbolista" ColumnName="futbolista_id_futbolista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_entrenam">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.tipo_entrenam">
+              <MappingFragment StoreEntitySet="tipo_entrenam">
+                <ScalarProperty Name="id_tipo_entr" ColumnName="id_tipo_entr" />
+                <ScalarProperty Name="nomb_entrenamiento" ColumnName="nomb_entrenamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="DBDeportesConcepcionModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="rut_usuario" ColumnName="rut_usuario" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
